@@ -9,26 +9,67 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='CarMake',
+            name="CarMake",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('description', models.TextField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                ("description", models.TextField()),
             ],
         ),
         migrations.CreateModel(
-            name='CarModel',
+            name="CarModel",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('type', models.CharField(choices=[('Sedan', 'Sedan'), ('SUV', 'SUV'), ('Wagon', 'Wagon'), ('Coupe', 'Coupe'), ('Hatchback', 'Hatchback')], max_length=50)),
-                ('year', models.IntegerField(validators=[django.core.validators.MinValueValidator(2015), django.core.validators.MaxValueValidator(2023)])),
-                ('car_make', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='djangoapp.carmake')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                (
+                    "type",
+                    models.CharField(
+                        choices=[
+                            ("Sedan", "Sedan"),
+                            ("SUV", "SUV"),
+                            ("Wagon", "Wagon"),
+                            ("Coupe", "Coupe"),
+                            ("Hatchback", "Hatchback"),
+                        ],
+                        max_length=50,
+                    ),
+                ),
+                (
+                    "year",
+                    models.IntegerField(
+                        validators=[
+                            django.core.validators.MinValueValidator(2015),
+                            django.core.validators.MaxValueValidator(2023),
+                        ]
+                    ),
+                ),
+                (
+                    "car_make",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="djangoapp.carmake",
+                    ),
+                ),
             ],
         ),
     ]
